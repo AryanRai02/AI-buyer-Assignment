@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuyerAI - Autonomous AI Purchasing Agent & Closed-Loop Cockpit</title>
+  <meta name="description" content="Enterprise AI Purchasing Agent for retail and quick-commerce operations. Multi-pillar investigation, multi-constraint reasoning, and closed-loop validation.">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar" id="main-header">
+    <div class="brand">
+      <div class="brand-logo" id="brand-logo">AI</div>
+      <div class="brand-text">
+        <h1 id="app-title">BuyerAI Purchasing Cockpit</h1>
+        <span>Autonomous Multi-Constraint Decision & Closed-Loop Validation Engine</span>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <span class="badge-status" id="agent-status-badge">
+        <span class="dot"></span> AGENT ACTIVE
+      </span>
+      <span class="provider-badge" id="provider-badge">Provider: AUTO</span>
+      <button class="btn btn-secondary" id="btn-reset-erp" onclick="resetERPState()" title="Reset ERP & WMS database to seed baseline">
+        🔄 Reset ERP
+      </button>
+      <button class="btn btn-primary" id="btn-run-all" onclick="runAllScenarios()" title="Execute complete evaluation benchmark across all 4 scenarios">
+        📊 Run Full Evaluation Suite
+      </button>
+    </div>
+  </header>
+
+  <!-- Key Metric KPI Ribbon -->
+  <section class="kpi-ribbon" id="kpi-ribbon">
+    <div class="kpi-card" id="card-kpi-nodes">
+      <div class="kpi-header">
+        <span>Fulfillment Nodes</span>
+        <span>🏬</span>
+      </div>
+      <div class="kpi-value" id="kpi-nodes">4</div>
+      <div class="kpi-subtext">3 Dark Stores + 1 Regional Hub</div>
+    </div>
+    <div class="kpi-card" id="card-kpi-skus">
+      <div class="kpi-header">
+        <span>Catalog SKUs</span>
+        <span>🏷️</span>
+      </div>
+      <div class="kpi-value" id="kpi-skus">4</div>
+      <div class="kpi-subtext">Dairy, Snacks, Beverages, Bulk</div>
+    </div>
+    <div class="kpi-card" id="card-kpi-pos">
+      <div class="kpi-header">
+        <span>Active Purchase Orders</span>
+        <span>📋</span>
+      </div>
+      <div class="kpi-value" id="kpi-pos">3</div>
+      <div class="kpi-subtext">In-Transit & Scheduled Dock Receipts</div>
+    </div>
+    <div class="kpi-card" id="card-kpi-storage">
+      <div class="kpi-header">
+        <span>Network Storage Utilization</span>
+        <span>📊</span>
+      </div>
+      <div class="kpi-value" id="kpi-storage">48%</div>
+      <div class="kpi-subtext">Volume & Pallet Space Allocation</div>
+    </div>
+    <div class="kpi-card" id="card-kpi-validation">
+      <div class="kpi-header">
+        <span>Validation Invariant Pass Rate</span>
+        <span>🛡️</span>
+      </div>
+      <div class="kpi-value" id="kpi-validation" style="color: var(--accent-emerald);">100%</div>
+      <div class="kpi-subtext">Storage, Budget, MOQ & Runway checks</div>
+    </div>
+  </section>
+
+  <!-- Main 3-Column Dashboard Grid -->
+  <main class="dashboard-grid" id="main-content">
+
+    <!-- Column 1: Scenarios & Test Suite Controller -->
+    <aside class="panel" id="scenarios-panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>🎯</span> Purchasing Scenarios
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="scenario-list" id="scenario-list">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+      <div style="padding: 1rem 1.25rem; border-top: 1px solid var(--border-color); background: rgba(255,255,255,0.01);">
+        <button class="btn btn-primary" id="btn-run-scenario" style="width: 100%; justify-content: center;" onclick="runActiveScenario()">
+          ⚡ Run Selected Scenario
+        </button>
+      </div>
+    </aside>
+
+    <!-- Column 2: Agent Execution Stream & Timeline Trace -->
+    <section class="panel" id="agent-workspace-panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>🤖</span> Autonomous Agent Decision & Feedback Stream
+        </div>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Real-Time Tool Calls & Invariant Checks</span>
+      </div>
+      <div class="panel-body" id="trace-container">
+        <div class="empty-state">
+          <div class="empty-icon">📦</div>
+          <div><strong>Ready for Purchasing Investigation</strong></div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem; max-width: 440px;">
+            Select a scenario on the left and click <strong>"Run Selected Scenario"</strong> to observe the AI Agent's five-pillar investigation, multi-constraint reasoning, transactional execution, and closed-loop validation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Column 3: Live ERP & WMS Telemetry -->
+    <aside class="panel telemetry-sidebar" id="telemetry-panel">
+      <div class="panel-header" style="padding: 0;">
+        <nav class="tab-nav" style="width: 100%;" aria-label="ERP Telemetry Tabs">
+          <button class="tab-btn active" id="tab-nodes" onclick="switchTab('nodes')">Nodes</button>
+          <button class="tab-btn" id="tab-pos" onclick="switchTab('pos')">Open POs</button>
+          <button class="tab-btn" id="tab-inventory" onclick="switchTab('inventory')">Inventory</button>
+          <button class="tab-btn" id="tab-audit" onclick="switchTab('audit')">Audit</button>
+        </nav>
+      </div>
+      <div class="panel-body" id="telemetry-content">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-10-16 14:07:41",
+  "all_passed": true,
+  "average_score_pct": 100.0,
+  "total_time_ms": 3.75,
+  "provider": "deterministic",
+  "criteria": [
+    "Information Gathering (5-Pillars)",
+    "Decision Correctness",
+    "Constraint Adherence (Storage/Budget/MOQ)",
+    "Action Appropriateness",
+    "Closed-Loop Result Validation",
+    "Failure Resilience & Recovery"
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "scenario_1",
+      "name": "Scenario 1: Recommendation Review & Modification",
+      "passed": true,
+      "score_pct": 100.0,
+      "details": {
+        "info_gathered": true,
+        "decision_correct": true,
+        "constraints_respected": true,
+        "action_appropriate": true,
+        "result_validated": true,
+        "resilience": true,
+        "latency_ms": 2.28,
+        "reasoning_summary": "System recommendation of 800 units rejected and modified to 200 units. 800 units exceeds warehouse storage capacity (ava..."
+      }
+    },
+    {
+      "scenario_id": "scenario_2",
+      "name": "Scenario 2: Supplier Shortage & Order Split",
+      "passed": true,
+      "score_pct": 100.0,
+      "details": {
+        "info_gathered": true,
+        "decision_correct": true,
+        "constraints_respected": true,
+        "action_appropriate": true,
+        "result_validated": true,
+        "resilience": true,
+        "latency_ms": 0.48,
+        "reasoning_summary": "Primary supplier had a 250-unit shortage on order of 500. Relying solely on 250 units would cause stockout in 6.2 days. ..."
+      }
+    },
+    {
+      "scenario_id": "scenario_3",
+      "name": "Scenario 3: Demand Surge & Order Acceleration",
+      "passed": true,
+      "score_pct": 100.0,
+      "details": {
+        "info_gathered": true,
+        "decision_correct": true,
+        "constraints_respected": true,
+        "action_appropriate": true,
+        "result_validated": true,
+        "resilience": true,
+        "latency_ms": 0.51,
+        "reasoning_summary": "Sales velocity surged 3.67x to 110.1 units/day. Standard delivery on Day 6 would have caused an immediate stockout on Da..."
+      }
+    },
+    {
+      "scenario_id": "scenario_4",
+      "name": "Scenario 4: Constraint Violation & Feedback Recovery",
+      "passed": true,
+      "score_pct": 100.0,
+      "details": {
+        "info_gathered": true,
+        "decision_correct": true,
+        "constraints_respected": true,
+        "action_appropriate": true,
+        "result_validated": true,
+        "resilience": true,
+        "latency_ms": 0.4,
+        "reasoning_summary": "Direct delivery of 300 units to MFC-South was rejected by WMS due to storage saturation (100 units available). The Close..."
+      }
+    }
+  ]
+}
